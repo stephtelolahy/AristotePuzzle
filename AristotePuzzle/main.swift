@@ -79,25 +79,17 @@ func combine2(from elements: [Int]) -> [[Int]] {
     return result
 }
 
-func combine3(from elements: [Int]) -> [[Int]] {
-    var result: [[Int]] = []
-    for array2 in combine2(from: elements) {
-        let toAdd = elements.filter{ !array2.contains($0) }
-        for el in toAdd {
-            let array3 = array2 + [el]
-            result.append(array3)
-        }
+func combine(n: Int, from elements: [Int]) -> [[Int]] {
+    if n == 2 {
+        return combine2(from: elements)
     }
-    return result
-}
-
-func combine4(from elements: [Int]) -> [[Int]] {
+    
     var result: [[Int]] = []
-    for array3 in combine3(from: elements) {
-        let toAdd = elements.filter{ !array3.contains($0) }
+    for arrayN_1 in combine(n: n - 1, from: elements) {
+        let toAdd = elements.filter{ !arrayN_1.contains($0) }
         for el in toAdd {
-            let array4 = array3 + [el]
-            result.append(array4)
+            let arrayN = arrayN_1 + [el]
+            result.append(arrayN)
         }
     }
     return result
@@ -111,8 +103,9 @@ func printArray(_ array: [[Int]]) {
 }
 
 printArray(combine2(from: [1, 2]))
-printArray(combine3(from: [1, 2, 3]))
-printArray(combine4(from: [1, 2, 3, 4]))
+printArray(combine(n: 3, from: [1, 2, 3]))
+printArray(combine(n: 4, from: [1, 2, 3, 4]))
+printArray(combine(n: 5, from: [1, 2, 3, 4, 5]))
 
 
 
