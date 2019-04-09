@@ -95,6 +95,10 @@ func combine(n: Int, from elements: [Int]) -> [[Int]] {
     return result
 }
 
+func shuffle(_ array: [Int]) -> [[Int]] {
+    return combine(n: array.count, from: array)
+}
+
 func printArray(_ array: [[Int]]) {
     for item in array {
         print(item)
@@ -102,10 +106,12 @@ func printArray(_ array: [[Int]]) {
     print("Total: \(array.count)")
 }
 
-printArray(combine2(from: [1, 2]))
-printArray(combine(n: 3, from: [1, 2, 3]))
-printArray(combine(n: 4, from: [1, 2, 3, 4]))
-printArray(combine(n: 5, from: [1, 2, 3, 4, 5]))
+//printArray(combine2(from: [1, 2]))
+//printArray(combine(n: 3, from: [1, 2, 3]))
+//printArray(combine(n: 4, from: [1, 2, 3, 4]))
+//printArray(combine(n: 5, from: [1, 2, 3, 4, 5]))
+
+printArray(shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
 
 
 
