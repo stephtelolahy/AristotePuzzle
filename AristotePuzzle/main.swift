@@ -65,12 +65,7 @@ func generate5NumbersCombinations(sum: Int) {
 //generate4NumbersCombinations(sum: 38)
 //generate5NumbersCombinations(sum: 38)
 
-
-func shuffle(array: [Int]) {
-    for result in combine3(from: array) {
-        print(result)
-    }
-}
+////////////////////////////////////////////////////////////////////////////////
 
 func combine2(from elements: [Int]) -> [[Int]] {
     var result: [[Int]] = []
@@ -96,7 +91,28 @@ func combine3(from elements: [Int]) -> [[Int]] {
     return result
 }
 
-shuffle(array: [1, 2, 3, 4])
+func combine4(from elements: [Int]) -> [[Int]] {
+    var result: [[Int]] = []
+    for array3 in combine3(from: elements) {
+        let toAdd = elements.filter{ !array3.contains($0) }
+        for el in toAdd {
+            let array4 = array3 + [el]
+            result.append(array4)
+        }
+    }
+    return result
+}
+
+func printArray(_ array: [[Int]]) {
+    for item in array {
+        print(item)
+    }
+    print("Total: \(array.count)")
+}
+
+printArray(combine2(from: [1, 2]))
+printArray(combine3(from: [1, 2, 3]))
+printArray(combine4(from: [1, 2, 3, 4]))
 
 
 
