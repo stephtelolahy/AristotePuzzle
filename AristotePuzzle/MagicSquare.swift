@@ -7,7 +7,7 @@
 //
 
 /**
- * Resolve Magic square 3x3
+ * Solve Magic square 3x3
  * https://en.wikipedia.org/wiki/Magic_square
  **/
 class MagicSquare {
@@ -52,7 +52,7 @@ class MagicSquare {
     }
     
     func run() {
-        print("Resolving Magic square...")
+        print("Solving Magic square...")
         var board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         var score = evaluate(board)
         var iterations = 0
