@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD95A5B5225E65B600FCB476 /* MagicSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD95A5B4225E65B600FCB476 /* MagicSquare.swift */; };
 		AD98B8F8225D08EF001AC10B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD98B8F7225D08EF001AC10B /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AD95A5B4225E65B600FCB476 /* MagicSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSquare.swift; sourceTree = "<group>"; };
 		AD98B8F4225D08EF001AC10B /* AristotePuzzle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AristotePuzzle; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD98B8F7225D08EF001AC10B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				AD98B8F7225D08EF001AC10B /* main.swift */,
+				AD95A5B4225E65B600FCB476 /* MagicSquare.swift */,
 			);
 			path = AristotePuzzle;
 			sourceTree = "<group>";
@@ -119,6 +122,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD95A5B5225E65B600FCB476 /* MagicSquare.swift in Sources */,
 				AD98B8F8225D08EF001AC10B /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
