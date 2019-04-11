@@ -36,17 +36,6 @@ class MagicSquare {
         return score
     }
     
-    private func neighbour(of board: [Int]) -> [Int] {
-        let i = Int.random(in: 0 ... (board.count - 1))
-        var j = 0
-        repeat {
-            j = Int.random(in: 0 ... (board.count - 1))
-        } while i == j
-        var newBoard = board
-        newBoard.swapAt(i, j)
-        return newBoard
-    }
-    
     private func displayString(_ board: [Int]) -> String {
         return  "\(board[0]) \(board[1]) \(board[2])\n\(board[3]) \(board[4]) \(board[5])\n\(board[6]) \(board[7]) \(board[8])"
     }
@@ -55,14 +44,16 @@ class MagicSquare {
         print("Solving Magic square...")
         var board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         var score = evaluate(board)
+        var bestScore = score
         var iterations = 0
         while score > 0 && iterations < 100000 {
             iterations += 1
-            let newBoard = neighbour(of: board)
-            let newScore = evaluate(newBoard)
-            print("\n\(displayString(newBoard)) \ni: \(iterations) score: \(newScore) best: \(score)")
-            board = newBoard
-            score = newScore
+            board.neighbour()
+            score = evaluate(board)
+            if score < bestScore {
+                bestScore = score
+            }
+            print("\n\(displayString(board)) \ni: \(iterations) score: \(score) best: \(bestScore)")
         }
     }
 }
