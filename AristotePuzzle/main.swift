@@ -11,3 +11,4 @@ import Foundation
 //print([1, 2, 3, 4].allCombinations().displayString())
 //MagicSquare().run()
 MagicHexagon().run()
+//MagicHexagon().checkEqMatrix()
