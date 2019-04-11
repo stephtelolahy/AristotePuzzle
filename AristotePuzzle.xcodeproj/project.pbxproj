@@ -11,6 +11,7 @@
 		AD95A5B9225E7CCB00FCB476 /* MagicHexagon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD95A5B8225E7CCB00FCB476 /* MagicHexagon.swift */; };
 		AD95A5BB225E7D8B00FCB476 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD95A5BA225E7D8B00FCB476 /* ArrayExtensions.swift */; };
 		AD98B8F8225D08EF001AC10B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD98B8F7225D08EF001AC10B /* main.swift */; };
+		ADDFF2A1225FEAFA00B0E77C /* BoardGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDFF2A0225FEAFA00B0E77C /* BoardGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,7 @@
 		AD95A5BA225E7D8B00FCB476 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		AD98B8F4225D08EF001AC10B /* AristotePuzzle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AristotePuzzle; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD98B8F7225D08EF001AC10B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		ADDFF2A0225FEAFA00B0E77C /* BoardGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				AD95A5B4225E65B600FCB476 /* MagicSquare.swift */,
 				AD95A5B8225E7CCB00FCB476 /* MagicHexagon.swift */,
 				AD95A5BA225E7D8B00FCB476 /* ArrayExtensions.swift */,
+				ADDFF2A0225FEAFA00B0E77C /* BoardGenerator.swift */,
 			);
 			path = AristotePuzzle;
 			sourceTree = "<group>";
@@ -128,6 +131,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADDFF2A1225FEAFA00B0E77C /* BoardGenerator.swift in Sources */,
 				AD95A5B9225E7CCB00FCB476 /* MagicHexagon.swift in Sources */,
 				AD95A5B5225E65B600FCB476 /* MagicSquare.swift in Sources */,
 				AD98B8F8225D08EF001AC10B /* main.swift in Sources */,

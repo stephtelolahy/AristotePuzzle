@@ -37,15 +37,6 @@ extension Array where Element == Int {
     func allCombinations() -> [[Int]] {
         return self.combine(n: self.count)
     }
-    
-    mutating func neighbour() {
-        let i = Int.random(in: 0 ... (self.count - 1))
-        var j = 0
-        repeat {
-            j = Int.random(in: 0 ... (self.count - 1))
-        } while i == j
-        self.swapAt(i, j)
-    }
 }
 
 extension Array where Element == [Int] {
@@ -59,4 +50,13 @@ extension Array where Element == [Int] {
         return result
     }
 }
+
+
+extension Int {
+    func factorial() -> Int {
+        return self == 1 ? self : self * (self - 1).factorial()
+    }
+}
+
+
 

@@ -52,36 +52,25 @@ class MagicHexagon {
                 ..\(board[16]).\(board[17]).\(board[18])..
                 """
     }
-    
     func run() {
         print("Solving Magic hexagon...")
         var board = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+        let generator = BoardGenerator(board: board)
         var score = evaluate(board)
         var bestScore = score
         var iterations = 0
-        while score > 0 && iterations < 10000 {
+        let maxIterations = board.count.factorial()
+        while score > 0 {
             iterations += 1
-            board.neighbour()
+            board = generator.next()
             score = evaluate(board)
             if score < bestScore {
                 bestScore = score
             }
-            print("\n\(displayString(board)) \ni: \(iterations) score: \(score) best: \(bestScore)")
+            print("\n\(displayString(board)) \ni: \(iterations) \((iterations * 100)/maxIterations)% score: \(score) best: \(bestScore)")
         }
     }
     
-    func checkEqMatrix() {
-        let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s"]
-        for i in 0...(eqMatrix.count - 1) {
-            var eq = ""
-            for j in 0...(eqMatrix[i].count - 1) {
-                if eqMatrix[i][j] == 1 {
-                    eq += ".\(letters[j])"
-                }
-            }
-            print(eq)
-        }
-    }
 }
 
 

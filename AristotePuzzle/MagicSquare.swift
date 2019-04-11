@@ -38,26 +38,28 @@ class MagicSquare {
     
     private func displayString(_ board: [Int]) -> String {
         return  """
-                \(board[0]) \(board[1]) \(board[2])
-                \(board[3]) \(board[4]) \(board[5])
-                \(board[6]) \(board[7]) \(board[8])
-                """
+        \(board[0]) \(board[1]) \(board[2])
+        \(board[3]) \(board[4]) \(board[5])
+        \(board[6]) \(board[7]) \(board[8])
+        """
     }
     
     func run() {
         print("Solving Magic square...")
         var board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        let generator = BoardGenerator(board: board)
         var score = evaluate(board)
         var bestScore = score
         var iterations = 0
-        while score > 0 && iterations < 100000 {
+        let maxIterations = board.count.factorial()
+        while score > 0 {
             iterations += 1
-            board.neighbour()
+            board = generator.next()
             score = evaluate(board)
             if score < bestScore {
                 bestScore = score
             }
-            print("\n\(displayString(board)) \ni: \(iterations) score: \(score) best: \(bestScore)")
+            print("\n\(displayString(board)) \ni: \(iterations) \((iterations * 100)/maxIterations)% score: \(score) best: \(bestScore)")
         }
     }
 }
