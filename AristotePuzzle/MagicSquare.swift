@@ -22,44 +22,96 @@ class MagicSquare {
         [1, 0, 0, 0, 1, 0, 0, 0, 1],
         [0, 0, 1, 0, 1, 0, 1, 0, 0]
     ]
+    
     private let expectedSum = 15
     
-    private func evaluate(_ board: [Int]) -> Int {
-        var score = 0
+    struct State {
+        var board: [Int] = []
+        var remaining: [Int] = []
+        var rejected: [Int] = []
+    }
+    
+    private func evaluate(_ board: [Int]) -> Bool {
         for i in 0...(eqMatrix.count - 1) {
+            var ignore = false
             var sum = 0
-            for j in 0...(board.count - 1) {
-                sum += eqMatrix[i][j] * board[j]
+            for j in 0...(eqMatrix[i].count - 1) {
+                if eqMatrix[i][j] == 1 {
+                    if j < board.count {
+                        sum += board[j]
+                    } else {
+                        ignore = true
+                    }
+                }
             }
-            score += abs(expectedSum - sum)
+            if !ignore && sum != expectedSum {
+                return false
+            }
         }
-        return score
+        return true
     }
     
     private func displayString(_ board: [Int]) -> String {
-        return  """
-        \(board[0]) \(board[1]) \(board[2])
-        \(board[3]) \(board[4]) \(board[5])
-        \(board[6]) \(board[7]) \(board[8])
-        """
+        let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i"]
+        var layout =  "a.b.c\nd.e.f\ng.h.i"
+        for i in 0..<9 {
+            let el = i < board.count ? "\(board[i])" : "*"
+            layout = layout.replacingOccurrences(of: alphabet[i], with: el)
+        }
+        return layout
+    }
+    
+    private func next(_ state: State) -> State {
+        var remaining = state.remaining + state.rejected
+        let board = state.board + [remaining.remove(at: 0)]
+        return State(board: board, remaining: remaining, rejected: [])
+    }
+    
+    private func swap(_ state: State) -> State {
+        var board = state.board
+        var remaining = state.remaining
+        let toAdd = remaining.remove(at: 0)
+        var rejected = state.rejected
+        
+        if !board.isEmpty {
+            let toReject = board.removeLast()
+            rejected.append(toReject)
+        }
+        
+        board.append(toAdd)
+        return State(board: board, remaining: remaining, rejected: rejected)
     }
     
     func run() {
         print("Solving Magic square...")
-        var board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-        let generator = BoardGenerator(board: board)
-        var score = evaluate(board)
-        var bestScore = score
+        
+        var state = State(board: [], remaining: [1, 2, 3, 4, 5, 6, 7, 8, 9], rejected: [])
+        var stack: [State] = []
         var iterations = 0
-        let maxIterations = board.count.factorial()
-        while score > 0 {
+        var done = false
+        
+        while !done {
             iterations += 1
-            board = generator.next()
-            score = evaluate(board)
-            if score < bestScore {
-                bestScore = score
+            let valid = evaluate(state.board)
+            print("\(displayString(state.board))\ni:\(iterations) valid:\(valid) remaining:\(state.remaining) rejected:\(state.rejected)\n")
+            if (valid) {
+                if state.remaining.isEmpty && state.rejected.isEmpty {
+                    done = true
+                } else {
+                    stack.append(state)
+                    state = next(state)
+                }
+            } else {
+                var swapped = false
+                while !swapped {
+                    if !state.remaining.isEmpty {
+                        state = swap(state)
+                        swapped = true
+                    } else {
+                        state = stack.removeLast()
+                    }
+                }
             }
-            print("\n\(displayString(board)) \ni: \(iterations) \((iterations * 100)/maxIterations)% score: \(score) best: \(bestScore)")
         }
     }
 }
