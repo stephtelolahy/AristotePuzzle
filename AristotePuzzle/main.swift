@@ -8,6 +8,5 @@
 
 import Foundation
 
-//print([1, 2, 3, 4, 5, 6, 7, 8, 9].allCombinations().displayString())
-MagicSquare().run()
-//MagicHexagon().run()
+//MagicSquare().run(with: [1, 2, 3, 4, 5, 6, 7, 8, 9])
+MagicHexagon().run(with: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])
